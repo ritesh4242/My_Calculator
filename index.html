@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>CALCULATOR</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 62px;
+            color: rgb(0, 0, 128);
+            padding-bottom: 10px;
+        }
+
+        #calculator {
+            height: 450px;
+            width: 340px;
+            padding: 20px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        #input {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 300px;
+            height: 68px;
+            margin: auto;
+            border-radius: 10px;
+            margin-top: 10px;
+
+        }
+
+        #keyboard {
+            width: 280px;
+            height: 300px;
+            margin: auto;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 70px);
+            gap: 10px;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+
+        #keyboard>div {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+            font-weight: 700;
+            padding: 25px;
+
+            border-radius: 10px;
+            font-size: 25px;
+        }
+
+        #black {
+            background-color: black;
+            color: white;
+
+        }
+
+        #red {
+            background-color: red;
+            color: white;
+        }
+
+        #keyboard>div:hover {
+            cursor: pointer;
+            background-color: rgb(123, 187, 187);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Calculator</h1>
+    <div id="calculator">
+        <div id="input"></div>
+        <div id="keyboard">
+            <div >1</div>
+            <div>2</div>
+            <div>3</div>
+            <div id="black">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div id="black">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div id="black">*</div>
+            <div id="red">C</div>
+            <div>0</div>
+            <div id="black">=</div>
+            <div id="black">/</div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let keys = document.querySelectorAll("#keyboard>div")
+    let bag = ""
+    // console.log(keys)
+    for (let i = 0; i < keys.length; i++) {
+        keys[i].addEventListener("click", myval)
+    }
+
+
+    function myval(event) {
+
+        let targetNumber = event.target.innerText
+        if (targetNumber == "C") {
+            bag = ""
+            document.querySelector("#input").innerText = bag;
+        } else if (targetNumber == "=") {
+            let ans = eval(bag)
+            document.querySelector("#input").innerText = ans;
+        }
+        else {
+            bag += targetNumber
+            // console.log(event.target.innerText)
+            document.querySelector("#input").innerText = bag;
+        }
+
+    }
+
+    console.log(eval("2+3/4*5"))
+</script>
